@@ -34,12 +34,12 @@ jobs:
         # запуск проверки проекта по flake8
         python -m flake8
         # перейти в папку, содержащую manage.py — 
-        #<корневая_папка_infra_actions>/<папка_проекта>/manage.py
+        # <корневая_папка_infra_actions>/<папка_проекта>/manage.py
         cd infra_project/
         # запустить написанные разработчиком тесты
         python manage.py test
 
-build_and_push_to_docker_hub:
+  build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: tests
@@ -63,7 +63,7 @@ build_and_push_to_docker_hub:
           push: true
           tags: kosspb12345/infra_actions:latest
 
-deploy:
+  deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
